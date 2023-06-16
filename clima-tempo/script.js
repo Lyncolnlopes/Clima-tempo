@@ -1,5 +1,5 @@
-const apikey = // Aqui você insere sua chave key do site OpenWeather, podendo utilizar a API.
-const apiCountryURL = 'https://countryflagsapi.com/png/'
+const apikey = "0cfd495e77ab3aa7aed3a94fa738ba4b"
+const apiCountryURL = "https://flagsapi.com/DE/flat/64/png/"
 const cityInput = document.querySelector("#city-input")
 const searchbtn = document.querySelector("#search")
 
@@ -15,7 +15,8 @@ const windElement = document.querySelector('#wind span')
 
 const getweatherdata = async (city) =>{
 
-    const apiweatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}&lang=pt_br`
+    
+    const apiweatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=pt_br&appid=${apikey}`
 
     const res = await fetch (apiweatherURL)
     const data =  await res.json()
