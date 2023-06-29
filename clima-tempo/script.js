@@ -1,5 +1,5 @@
 const apikey = "0cfd495e77ab3aa7aed3a94fa738ba4b"
-const apiCountryURL = "https://flagsapi.com/flat/64.png/"
+
 const cityInput = document.querySelector("#city-input")
 const searchbtn = document.querySelector("#search")
 
@@ -20,6 +20,7 @@ const getweatherdata = async (city) => {
 
     const res = await fetch(apiweatherURL)
     const data = await res.json()
+    console.log(data)
 
 
 
@@ -32,7 +33,9 @@ const showWeatherData = async (city) => {
     cityElement.innerText = data.name
     tempElement.innerText = parseInt(data.main.temp)
     weatherIconElement.setAttribute('src', `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`)
-    countryElement.setAttribute('src', apiCountryURL + data.sys.country)
+    const countryCode = data.sys.country.toLowerCase()
+    const countryFlagURL = `https://flagpedia.net/data/flags/normal/${countryCode}.png`;
+    countryElement.setAttribute('src', countryFlagURL)
     windElement.innerText = `${data.wind.speed}km/h`
     umidityElement.innerText = `${data.main.humidity}%`
     descElement.innerText = data.weather[0].description
@@ -42,13 +45,13 @@ const showWeatherData = async (city) => {
 
 
     if (temperature >= 30) {
-        body.style.background = 'url(https://images.pexels.com/photos/1533483/pexels-photo-1533483.jpeg?auto=compress&cs=tinysrgb&w=1700)';
+        body.style.background = 'url(https://images.pexels.com/photos/1533483/pexels-photo-1533483.jpeg?auto=compress&cs=tinysrgb&w=1900)';
     } else if (temperature >= 20) {
-        body.style.background = 'url(https://images.pexels.com/photos/2586067/pexels-photo-2586067.jpeg?auto=compress&cs=tinysrgb&w=1700)';
+        body.style.background = 'url(https://images.pexels.com/photos/2586067/pexels-photo-2586067.jpeg?auto=compress&cs=tinysrgb&w=1900)';
     } else if (temperature >= 10) {
-        body.style.background ='url(https://images.pexels.com/photos/1460230/pexels-photo-1460230.jpeg?auto=compress&cs=tinysrgb&w=1700)' ;
+        body.style.background = 'url(https://images.pexels.com/photos/1460230/pexels-photo-1460230.jpeg?auto=compress&cs=tinysrgb&w=1900)';
     } else {
-        body.style.background = 'url(https://images.pexels.com/photos/6526177/pexels-photo-6526177.jpeg?auto=compress&cs=tinysrgb&w=1700)';
+        body.style.background = 'url(https://images.pexels.com/photos/6526177/pexels-photo-6526177.jpeg?auto=compress&cs=tinysrgb&w=1900)';
     }
 
 
@@ -68,27 +71,22 @@ searchbtn.addEventListener('click', async (e) => {
 
     const city = cityInput.value
 
-    showWeatherData(city)
+    await showWeatherData(city)
 
-
-    //console.log(city)
+    document.getElementById('weather-data').style.display = 'block'
 })
-document.addEventListener("keypress", function (e) {
+
+document.addEventListener("keypress", async (e) => {
     if (e.key === 'Enter') {
-        var bnt = document.querySelector("#search");
-        bnt.click();
+        e.preventDefault();
+
+        const city = cityInput.value
+
+        await showWeatherData(city)
 
         document.getElementById('weather-data').style.display = 'block'
     }
-})
+});
 
 
 
-/*cityInput.addEventListener('keyup', e => {
-    if (e.code === 'Enter'){
-        const city = e.target.value
-        showWeatherData(city)
-    }
-})*/
-
-//classList.remove('hide') = para remover uma class pelo java script

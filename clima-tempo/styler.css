@@ -7,7 +7,9 @@
 
 body {
     background: linear-gradient(180deg, rgba(89, 76, 238, 1) 0%, #8dd0f5) 100%;
+    background-repeat: no-repeat;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -115,5 +117,60 @@ body {
 
 #detalis-container #umidity {
     border-right: 1px solid #fff;
+
+}
+
+@media(max-width:768px) {
+    .icon-git {
+        display: inline;
+        font-size: 35px;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 1rem;
+        color: #fdfdfd;
+        margin-top: 1em;
+    }
+    body {
+        background: linear-gradient(180deg, rgba(89, 76, 238, 1) 0%, #8dd0f5) 100%;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+}
+@media(min-width:769px){
+    .icon-git {
+        display: inline;
+        font-size: 35px;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 1rem;
+        color: #fdfdfd;
+        margin-top: 1em;
+    }
+    body {
+        background: linear-gradient(180deg, rgba(89, 76, 238, 1) 0%, #8dd0f5) 100%;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-position: center;
+        background-size: cover;
+    }
+
 
 }
